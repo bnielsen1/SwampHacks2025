@@ -1,19 +1,17 @@
 import React from 'react';
-
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import MainPage from './components/MainPage/MainPage';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <div className="title">
-        StudySesh
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+        </Routes>
       </div>
-      <div className="three-columns">
-        <div className="column">Column 1</div>
-        <div className="column">Column 2</div>
-        <div className="column">Column 3</div>
-      </div>
-    </div>
+    </Router>
   );
 }
 
