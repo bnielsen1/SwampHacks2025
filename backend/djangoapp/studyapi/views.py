@@ -7,7 +7,7 @@ from django.http import JsonResponse
 from utils import get_db_handle
 from bson import json_util
 
-from config import db, host, username, password
+from .config import db, host, username, password
 
 # Grab all sessions
 # Grab with specific session id
