@@ -17,7 +17,16 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
+from django.urls import include
+from rest_framework import routers
+from seshapi import views
+
+router = routers.DefaultRouter()
+router.register(r'sessions', views.SessionViewSet, basename='session')
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path('', views.index),
+    path('api/', include(router.urls)),
+    path('sessions/', include('rest_framework.urls', namespace='rest-framework'))
 ]
