@@ -47,3 +47,10 @@ def session_library(request, library):
     data_list = list(data)
 
     return JsonResponse(data_list, safe=False, json_dumps_params={'default': json_util.default})
+
+def users(request):
+    db_handle, client = get_db_handle(db, host, username, password)
+    collection = db_handle["Users"]
+    data = collection.find({}) 
+    data_list = list(data)
+    return JsonResponse(data_list, safe=False, json_dumps_params={'default': json_util.default})

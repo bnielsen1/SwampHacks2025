@@ -6,4 +6,5 @@ urlpatterns = [
     path("sessions/", views.sessions),
     path('sessions/course/<str:coursecode>/', views.session_course),
     path('sessions/library/<str:library>/', views.session_library),
+    path('users', views.users),
 ]
