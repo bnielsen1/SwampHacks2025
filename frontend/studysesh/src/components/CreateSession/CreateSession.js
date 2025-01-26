@@ -127,9 +127,7 @@ const CreateSession = () => {
             <p className="text-red-600 text-sm mt-1">{errors.library}</p>
           )}
         </div>
-        <button type="submit" disabled={loading}>
-          {loading ? "Submitting..." : "Create Session"}
-        </button>
+        
           <div>
           <label htmlFor="date">End Time:</label>
           <input
@@ -157,7 +155,7 @@ const CreateSession = () => {
             required
           />
         </div>
-        <button type="submit">Create Session</button>
+        <button type="submit">Create Session Andrew</button>
       </form>
       {responseMessage && <p>{responseMessage}</p>}
     </div>
