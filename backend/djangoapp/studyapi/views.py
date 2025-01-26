@@ -56,7 +56,7 @@ def session_library(request, library):
     db_handle, client = get_db_handle(db, host, username, password)
 
     collection = db_handle['Sessions']
-    data = collection.find({'Course': library})
+    data = collection.find({'Library': library})
 
     data_list = list(data)
 
@@ -126,6 +126,24 @@ def search_courses(request, search):
 
     return JsonResponse({"error": "Invalid HTTP method"}, status=405)
 
+def search_library(request):
+    if request.method == "GET":
+
+        # Connect to the database
+        db_handle, client = get_db_handle(db, host, username, password)
+        collection = db_handle['UFlibraries']
+        
+        # Search for libraries with matching search
+
+        data = collection.find()
+        # Convert the result to a list and return as JSON
+        data_list = list(data)
+        
+        # Return the data in the response
+        return JsonResponse(data_list, safe=False, json_dumps_params={'default': json_util.default})
+
+    return JsonResponse({"error": "Invalid HTTP method"}, status=405)
+
 @csrf_exempt
 @require_auth(None)
 def send_email(request):
@@ -159,8 +177,23 @@ def add_user(request):
 
             if not user_email:
                 return JsonResponse({"error": "Email not provided"}, status=400)
+            
+            db_handle, client = get_db_handle(db, host, username, password)
+            collection = db_handle["Users"]
 
-            return JsonResponse({"message": f"Email {user_email} received successfully"})
+            print(collection.find_one({'Email': user_email}))
+
+            if (collection.find_one({'Email': user_email})):
+                print('account already found under above email. normal login')
+                return JsonResponse({"message": f"Email {user_email} already has account"})
+            else:
+                # make account
+                new_user = {
+                    'Email': user_email
+                }
+                collection.insert_one(new_user)
+                return JsonResponse({"message": f"Email {user_email} new account created successfully"})
+            
         except Exception as e:
             logger.error(f"Error processing email: {e}")
             return JsonResponse({"error": str(e)}, status=500)
