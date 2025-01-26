@@ -15,12 +15,24 @@ function CourseSearch() {
   const [sessions, setSessions] = useState([]);  // State to store sessions related to selected course
   const [showSuggestions, setShowSuggestions] = useState(false);  // Toggle for showing suggestions
   const [selectedCourseCode, setSelectedCourseCode] = useState(null);  // Track selected course code
+  const [isPopupVisible, setIsPopupVisible] = useState(false);
+  const [popupSession, setPopupSession] = useState(null);
   const { isAuthenticated } = useAuth0();
   const navigate = useNavigate();
   
   const navigateTo = (path) => {
     navigate(path);
   };
+
+  const handleOpenPopup = (session) => {
+    setPopupSession(session);
+    setIsPopupVisible(true);
+  }
+  
+  const handleClosePopup = () => {
+    setPopupSession(null);
+    setIsPopupVisible(false);
+  }
 
   // Handle the change in input field
   const searchBoxChange = (event) => {
@@ -136,14 +148,14 @@ function CourseSearch() {
             <h3 className={styles.sessionsTitle}>Sessions for {selectedCourseCode}</h3>
             <ul className={styles.sessionsList}>
               {sessions.map((session) => (
-                <li className={styles.sessionItem} key={session._id.$oid}>
+                <li className={styles.sessionItem} key={session._id.$oid} onClick={() => handleOpenPopup(session)}>
                   <div className={styles.sessionInfo}>
                     <div>User: {session.User}</div>
                     <div>Library: {session.Library}</div>  
                     <div>Course {session.Course}</div>
                   </div>
                   <div className={styles.pfp}>
-                    <img src="/images/TempImage.jpg" alt="pfp" className={styles.pfp}/>
+                    <img src={session.PFP} alt="pfp" className={styles.pfp}/>
                   </div>
                 </li>
               ))}
@@ -153,9 +165,56 @@ function CourseSearch() {
 
         {/* If no sessions found, display a message */}
         {selectedCourseCode && sessions.length === 0 && (
-          <div>No sessions found for this course.</div>
+          <div className={styles.notFound}>No sessions found for this course.</div>
         )}
       </div>
+
+      {isPopupVisible && (
+        <div className={styles.popupOverlay} onClick={handleClosePopup}>
+          <div className={styles.popupContent}>
+          <h3 className={styles.popupTitle}>{selectedCourseCode}</h3>
+          
+          <div className={styles.popupContainer}>
+            <div className={styles.popupDetails}>
+              <div className={styles.popupUserContainer}>
+                <div className={styles.popupUserTag}>
+                  User
+                </div>
+                <div className={styles.popupUser}>
+                  {popupSession.User}
+                </div>
+              </div>
+              <div className={styles.popupLibraryContainer}>
+                <div className={styles.popupLibraryTag}>
+                  Library
+                </div>
+                <div className={styles.popupLibrary}>
+                  {popupSession.Library}
+                </div>
+              </div>
+              <div className={styles.popupTimeContainer}>
+                <div className={styles.popupTimeTag}>
+                  Time
+                </div>
+                <div className={styles.popupTime}>
+                  {popupSession.Date.toString()}
+                </div>
+              </div>
+              <div className={styles.popupDescription}>
+                <p>{popupSession.Description}</p>
+              </div>
+
+            </div>
+            
+            <div className={styles.popupPicture}>
+              <img src={popupSession.PFP} alt="pfp" className={styles.popupPfp}/>
+            </div>
+          </div>
+          
+        </div> 
+
+      </div>
+      )}
     </div>
   )
 };
