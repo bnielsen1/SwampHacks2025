@@ -1,0 +1,303 @@
+@import url('https://fonts.googleapis.com/css2?family=Irish+Grover&family=Press+Start+2P&display=swap');
+@import url('../../styles/colors.css');
+
+.App {
+  text-align: center;
+  background-color: var(--dark);
+  user-select: none;
+}
+
+.header {
+  padding-left: 7vw;
+  padding-right: 7vw;
+  padding-top: 4vh;
+  padding-bottom: 4vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logoCircle {
+  width: 11vh;
+  height: 11vh;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  background-color: var(--dimGray);
+}
+
+.logo {
+  width: 8vh;
+}
+
+.title {
+  flex: 7;
+  font-family: "Press Start 2P", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 5vw;
+  color: var(--spotGreen);
+  user-select: none;
+}
+
+.buttonContainer {
+  flex: 3;
+}
+
+.logoutButton {
+  font-family: "Press Start 2P", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 4vh;
+  width: 100%;
+  padding: 2vh;
+  border-radius: 20vh;
+  color: var(--light);
+  background-color: var(--dimGray);
+  cursor: pointer;
+  box-shadow: 0 2px 2px black;
+}
+
+.logoutButton:hover {
+  background-color: var(--ashGray);
+}
+
+.bodyContainer {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: top;
+  flex-direction: row;
+  overflow: auto;
+  min-height: 81vh;
+}
+
+.formContainer {
+  flex: 1;
+  margin: 0vh 8vw 8vh 8vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: var(--blackOlive);
+  border-radius: 15vh;
+}
+
+.createTitle {
+  position: absolute;
+  font-family: "Press Start 2P", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 6vh;
+  color: var(--light);
+  top: 23vh;
+}
+
+.userContainer {
+  position: absolute;
+  font-family: "Press Start 2P", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 3vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 10vh;
+  width: 50vw;
+  left: 25vw;
+  top: 35vh;
+}
+
+.userTag {
+  flex: 1;
+  font-family: "Press Start 2P", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 3vh;
+  width: 10vw;
+  color: var(--ashGray)
+}
+
+.userBox {
+  flex: 2;
+  color: var(--light)
+}
+
+.courseContainer {
+  position: absolute;
+  font-family: "Press Start 2P", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 3vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 10vh;
+  width: 50vw;
+  left: 25vw;
+  top: 42vh;
+}
+
+.courseTag {
+  flex: 1;
+  font-family: "Press Start 2P", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 3vh;
+  width: 10vw;
+  color: var(--ashGray)
+}
+
+.courseBox {
+  flex: 2;
+  font-family: "Press Start 2P", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 3vh;
+  color: var(--dimGray);
+  height: 5vh;
+}
+
+.libraryContainer {
+  position: absolute;
+  font-family: "Press Start 2P", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 3vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 10vh;
+  width: 50vw;
+  left: 25vw;
+  top: 49vh;
+}
+
+.libraryTag {
+  flex: 1;
+  font-family: "Press Start 2P", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 3vh;
+  width: 10vw;
+  color: var(--ashGray)
+}
+
+.libraryBox {
+  flex: 2;
+  font-family: "Press Start 2P", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 3vh;
+  color: var(--dimGray);
+  height: 5vh;
+}
+
+.dateContainer {
+  position: absolute;
+  font-family: "Press Start 2P", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 3vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 10vh;
+  width: 50vw;
+  left: 25vw;
+  top: 56vh;
+}
+
+.dateTag {
+  flex: 1;
+  font-family: "Press Start 2P", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 3vh;
+  width: 6vw;
+  color: var(--ashGray)
+}
+
+.dateBox {
+  flex: 2;
+  font-family: "Press Start 2P", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 3vh;
+  color: var(--dimGray);
+  height: 5vh;
+}
+
+.descriptionContainer {
+  position: absolute;
+  font-family: "Press Start 2P", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 3vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 10vh;
+  width: 50vw;
+  left: 25vw;
+  top: 63vh;
+}
+
+.descriptionTag {
+  flex: 1;
+  font-family: "Press Start 2P", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 3vh;
+  width: 10vw;
+  color: var(--ashGray)
+}
+
+.descriptionBox {
+  flex: 2;
+  font-family: "Press Start 2P", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 3vh;
+  color: var(--dimGray);
+  height: 5vh;
+  overflow-y: auto;
+}
+
+.createButton {
+  position: absolute;
+  font-family: "Press Start 2P", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 4vh;
+  width: 50vw;
+  height: 7vh;
+  left: 25vw;
+  top: 75vh;
+  border-radius: 20vh;
+  background-color: var(--spotGreen);
+  color: var(--light);
+  box-shadow: 0 2px 2px black;
+}
+
+.createButton:hover {
+  background-color: var(--lightGreen);
+}
+
+.errorTag {
+  position: absolute;
+  background-color: var(--errorRed);
+  padding: 2vh;
+  font-family: "Press Start 2P", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 2vh;
+  border-radius: 10vh;
+  top: 40vh;
+  left: 15vw
+}

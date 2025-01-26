@@ -194,7 +194,7 @@ function CourseSearch() {
               </div>
               <div className={styles.popupTimeContainer}>
                 <div className={styles.popupTimeTag}>
-                  Time
+                  End Time
                 </div>
                 <div className={styles.popupTime}>
                   {popupSession.Date.toString()}
