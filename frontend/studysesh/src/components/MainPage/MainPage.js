@@ -54,12 +54,23 @@ function MainPage() {
             <button className={styles.courseButton}>Search by Course</button>
           </div>          
         </div>
-        <div className={styles.middleColumn}>Column 2</div>
+        <div className={styles.middleColumn}>
+        <div className={styles.menuImageContainer}>
+            <img src="/images/TempImage.jpg" alt="middleImage" className={styles.menuImage}/>
+          </div>
+          <div className={styles.sessionButtonContainer}>
+            <button className={styles.sessionButton}>
+              <img src="/images/ic_round-plus.svg" alt="plusSymbol" className={styles.plusSymbol}/>
+            </button>
+          </div>
+        </div>
         <div className={styles.rightColumn}>
-          Column 3
-        <p>{id}</p>
-        <p>{course}</p>
-        <p>{library}</p>
+          <div className={styles.menuImageContainer}>
+            <img src="/images/TempImage.jpg" alt="rightImage" className={styles.menuImage}/>
+          </div>
+          <div className={styles.libraryButtonContainer}>
+            <button className={styles.libraryButton}>Search by Library</button>
+          </div>
         </div>
       </div>
     </div>
