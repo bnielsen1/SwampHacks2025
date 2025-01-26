@@ -61,6 +61,24 @@
   background-color: var(--lightGreen);
 }
 
+.logoutButton {
+  font-family: "Press Start 2P", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 4vh;
+  width: 100%;
+  padding: 2vh;
+  border-radius: 20vh;
+  color: var(--light);
+  background-color: var(--dimGray);
+  cursor: pointer;
+  box-shadow: 0 2px 2px black;
+}
+
+.logoutButton:hover {
+  background-color: var(--ashGray);
+}
+
 .threecolumns {
   padding-left: 4.4vw;
   padding-right: 4.4vw;

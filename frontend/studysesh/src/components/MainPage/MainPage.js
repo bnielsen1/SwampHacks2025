@@ -1,5 +1,6 @@
 import React,  { useEffect, useState }from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth0 } from "@auth0/auth0-react";
 import config from '../../config/config';
 import styles from './MainPage.module.css';
 import axios from 'axios';
@@ -11,6 +12,7 @@ function MainPage() {
   const [id, setId] = useState(-1);
   const [course, setCourse] = useState(null);
   const [library, setLibrary] = useState(null);
+  const { isAuthenticated } = useAuth0();
 
   useEffect(() => {
     axios.get(`http://127.0.0.1:8000/api/sessions/?format=json`)
@@ -36,7 +38,11 @@ function MainPage() {
         StudySesh
         </div>
         <div className={styles.buttonContainer}>
-          <LoginButton className={styles.loginButton}/>
+        {isAuthenticated ? (
+            <LogoutButton className={styles.logoutButton} />
+          ) : (
+            <LoginButton className={styles.loginButton} />
+          )}
         </div>
       </div>
       <div className={styles.threecolumns}>
@@ -56,9 +62,6 @@ function MainPage() {
         <p>{library}</p>
         </div>
       </div>
-      
-      <LogoutButton />
-      <Profile />
     </div>
   )
 };
