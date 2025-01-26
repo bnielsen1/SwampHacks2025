@@ -9,7 +9,7 @@ urlpatterns = [
     path('users', views.users),
     path('UFdata',views.UFdata),
     path('public', views.public),
-    path('private', views.private)
+    path('private', views.private),
     path('courses', views.courses),
     path('courses/<str:search>/', views.search_courses)
 ]
