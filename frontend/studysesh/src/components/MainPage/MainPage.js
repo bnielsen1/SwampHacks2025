@@ -38,6 +38,7 @@ function MainPage() {
 
   useEffect(() => {
     const add_user = async () => {
+      console.log('called api attempt')
       if (!isLoading && isAuthenticated && user) {
         try {
           // Obtain an access token
