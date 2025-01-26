@@ -14,6 +14,11 @@ function MainPage() {
   const [course, setCourse] = useState(null);
   const [library, setLibrary] = useState(null);
   const { isAuthenticated } = useAuth0();
+  const navigate = useNavigate();
+  
+  const navigateTo = (path) => {
+    navigate(path);
+  };
 
   useEffect(() => {
     axios.get(`http://127.0.0.1:8000/api/sessions/?format=json`)
@@ -52,7 +57,7 @@ function MainPage() {
             <img src="/images/TempImage.jpg" alt="leftImage" className={styles.menuImage}/>
           </div>
           <div className={styles.courseButtonContainer}>
-            <button className={styles.courseButton}>Search by Course</button>
+            <button onClick={() => navigateTo('/course-search')} className={styles.courseButton}>Search by Course</button>
           </div>          
         </div>
         <div className={styles.middleColumn}>
