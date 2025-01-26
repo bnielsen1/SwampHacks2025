@@ -12,6 +12,7 @@ from authlib.integrations.django_oauth2 import ResourceProtector
 import logging
 from django.views.decorators.csrf import csrf_exempt
 
+
 logger = logging.getLogger(__name__)
 
 from .config import db, host, username, password
@@ -198,3 +199,32 @@ def add_user(request):
             logger.error(f"Error processing email: {e}")
             return JsonResponse({"error": str(e)}, status=500)
     return JsonResponse({"error": "Invalid HTTP method"}, status=405)
+
+
+#@require_auth(None)
+@csrf_exempt
+def create_session(request):
+    print("INSIDE VIEW")
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            user = data.get('user')
+            course = data.get('course')
+            #print("ran here")
+            library = data.get('library')
+            date = data.get('date')
+            pfp = data.get('pfp')
+            description = data.get('description')
+
+            
+            # HANDLE HOURS DATE/TIME LOGIC INTO MONGO
+
+            db_handle, client = get_db_handle(db, host, username, password)
+            collection = db_handle["Sessions"]
+            data = collection.insert_one({'User': user, 'Course': course, 'Library': library, "Date": date, "PFP": pfp, "Description": description}) 
+            return JsonResponse(dict(message="Session successfully created."))
+
+        except Exception as e:
+            print(f"Error: {e}")
+            return JsonResponse(dict(message="An error occurred while creating the session."), status=400)
+    return JsonResponse(dict(message="Invalid request method."), status=405)

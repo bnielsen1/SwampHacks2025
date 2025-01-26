@@ -7,7 +7,8 @@ import axios from 'axios';
 import LoginButton from "../../login";
 import Profile from '../../profile';
 import LogoutButton from '../../logout';
-
+import SendEmailButton from '../../sendDataButton';
+// import CourseCard from '../../courseCard';
 
 
 function MainPage() {
@@ -20,6 +21,7 @@ function MainPage() {
   const navigateTo = (path) => {
     navigate(path);
   };
+
   useEffect(() => {
     axios.get(`http://127.0.0.1:8000/api/sessions/?format=json`)
       .then(response => {
@@ -82,14 +84,14 @@ function MainPage() {
         {isAuthenticated ? (
             <LogoutButton className={styles.logoutButton} />
           ) : (
-            <LoginButton className={styles.loginButton} />
+            <LoginButton className={styles.loginButton} textOutput="Log In"/>
           )}
         </div>
       </div>
       <div className={styles.threecolumns}>
         <div className={styles.leftColumn}>
           <div className={styles.menuImageContainer}>
-            <img src="/images/TempImage.jpg" alt="leftImage" className={styles.menuImage}/>
+            <img src="/images/lecture.jpg" alt="leftImage" className={styles.menuImage}/>
           </div>
           <div className={styles.courseButtonContainer}>
             <button onClick={() => navigateTo('/course-search')} className={styles.courseButton}>Search by Course</button>
@@ -100,14 +102,18 @@ function MainPage() {
             <img src="/images/TempImage.jpg" alt="middleImage" className={styles.menuImage}/>
           </div>
           <div className={styles.sessionButtonContainer}>
-            <button className={styles.sessionButton}>
+          {isAuthenticated ? (
+            <button onClick={() => navigateTo('/create')} className={styles.sessionButton}>
               <img src="/images/ic_round-plus.svg" alt="plusSymbol" className={styles.plusSymbol}/>
             </button>
+          ) : (
+            <LoginButton className={styles.sessionButton} textOutput={<img src="/images/ic_round-plus.svg" alt="plusSymbol" className={styles.plusSymbol}/>}/>
+          )}
           </div>
         </div>
         <div className={styles.rightColumn}>
           <div className={styles.menuImageContainer}>
-            <img src="/images/TempImage.jpg" alt="rightImage" className={styles.menuImage}/>
+            <img src="/images/Marston_Library.jpg" alt="rightImage" className={styles.menuImage}/>
           </div>
           <div className={styles.libraryButtonContainer}>
             <button onClick={() => navigateTo('/library-search')} className={styles.libraryButton}>Search by Library</button>
