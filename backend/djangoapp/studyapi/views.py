@@ -163,15 +163,15 @@ def add_user(request):
             db_handle, client = get_db_handle(db, host, username, password)
             collection = db_handle["Users"]
 
-            print(collection.find_one({'Name': user_email}))
+            print(collection.find_one({'Email': user_email}))
 
-            if (collection.find_one({'Name': user_email})):
+            if (collection.find_one({'Email': user_email})):
                 print('account already found under above email. normal login')
                 return JsonResponse({"message": f"Email {user_email} already has account"})
             else:
                 # make account
                 new_user = {
-                    'Name': user_email
+                    'Email': user_email
                 }
                 collection.insert_one(new_user)
                 return JsonResponse({"message": f"Email {user_email} new account created successfully"})
