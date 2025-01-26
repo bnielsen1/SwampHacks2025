@@ -13,6 +13,7 @@ urlpatterns = [
     path('courses', views.courses),
     path('courses/<str:search>/', views.search_courses),
     path('send-email', views.send_email),
-    path('add-user', views.add_user)
+    path('add-user', views.add_user),
+    path('create-session/', views.create_session, name='create_session'),
 ]
 

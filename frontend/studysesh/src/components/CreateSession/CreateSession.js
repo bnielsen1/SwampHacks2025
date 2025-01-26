@@ -7,12 +7,12 @@ const CreateSession = () => {
   //const [user, setUser] = useState('');
   const [course, setCourse] = useState('');
   const [library, setLibrary] = useState('');
-  //const [hours, setHour] = useState('');
+  //const [hours, setHours] = useState('');
   const [responseMessage, setResponseMessage] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    //console.log('Submitted hours:', hours); // Log the hours on submission
     const data = {
       user: user.name,
       course: course,
@@ -69,16 +69,16 @@ const CreateSession = () => {
             required
           />
         </div>
-        {/* <div>
-          <label htmlFor="hours">Library:</label>
+        {/* { <div>
+          <label htmlFor="hours">End Time:</label>
           <input
             type="time"
             id="hours"
             value={hours}
-            onChange={(e) => setLibrary(e.target.value)}
+            onChange={(e) => setHours(e.target.value)}
             required
           />
-        </div> */}
+        </div> } */}
         <button type="submit">Create Session</button>
       </form>
       {responseMessage && <p>{responseMessage}</p>}
