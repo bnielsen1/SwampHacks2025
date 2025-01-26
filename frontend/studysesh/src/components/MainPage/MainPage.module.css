@@ -4,6 +4,7 @@
 .App {
   text-align: center;
   background-color: var(--dark);
+  user-select: none;
 }
 
 .header {
