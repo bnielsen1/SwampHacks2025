@@ -1,0 +1,10 @@
+[
+    {
+      "library_name": "Central Library",
+      "location": {
+        "street": "123 Main Street",
+        "city": "Anytown",
+        "state": "CA"
+      }
+    }
+  ]
