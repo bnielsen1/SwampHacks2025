@@ -7,6 +7,7 @@ const CreateSession = () => {
   const [course, setCourse] = useState('');
   const [library, setLibrary] = useState('');
   const [libraries, setLibraries] = useState([]);
+  const [date, setDate] = useState('');
   const [responseMessage, setResponseMessage] = useState('');
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
@@ -36,6 +37,9 @@ const CreateSession = () => {
     }
   };
 
+  const [description, setDescription] = useState('');
+  
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors({});
@@ -61,6 +65,9 @@ const CreateSession = () => {
       user: isAuthenticated ? user.name : 'Unknown User',  // Handle undefined user
       course: course,
       library: library,
+      date: date,
+      pfp: user.picture,
+      description: description
     };
 
     try {
@@ -120,9 +127,35 @@ const CreateSession = () => {
             <p className="text-red-600 text-sm mt-1">{errors.library}</p>
           )}
         </div>
-        <button type="submit" disabled={loading}>
-          {loading ? "Submitting..." : "Create Session"}
-        </button>
+        
+          <div>
+          <label htmlFor="date">End Time:</label>
+          <input
+            type="datetime-local"
+            id="date"
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
+            required
+          />
+        </div> 
+        <div>
+          <input
+            type="hidden"
+            id="pfp"
+            value={user.picture} // You can set this dynamically if needed
+          />
+        </div>
+        <div>
+          <label htmlFor="description">Description:</label>
+          <input
+            type="text"
+            id="description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            required
+          />
+        </div>
+        <button type="submit">Create Session Andrew</button>
       </form>
       {responseMessage && <p>{responseMessage}</p>}
     </div>
