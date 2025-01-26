@@ -159,8 +159,23 @@ def add_user(request):
 
             if not user_email:
                 return JsonResponse({"error": "Email not provided"}, status=400)
+            
+            db_handle, client = get_db_handle(db, host, username, password)
+            collection = db_handle["Users"]
 
-            return JsonResponse({"message": f"Email {user_email} received successfully"})
+            print(collection.find_one({'Email': user_email}))
+
+            if (collection.find_one({'Email': user_email})):
+                print('account already found under above email. normal login')
+                return JsonResponse({"message": f"Email {user_email} already has account"})
+            else:
+                # make account
+                new_user = {
+                    'Email': user_email
+                }
+                collection.insert_one(new_user)
+                return JsonResponse({"message": f"Email {user_email} new account created successfully"})
+            
         except Exception as e:
             logger.error(f"Error processing email: {e}")
             return JsonResponse({"error": str(e)}, status=500)
