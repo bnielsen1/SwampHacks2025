@@ -181,6 +181,7 @@ def add_user(request):
             return JsonResponse({"error": str(e)}, status=500)
     return JsonResponse({"error": "Invalid HTTP method"}, status=405)
 
+@csrf_exempt
 def create_session(request):
     print("INSIDE VIEW")
     if request.method == 'POST':
