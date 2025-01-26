@@ -8,18 +8,19 @@ import LoginButton from "../../login";
 import Profile from '../../profile';
 import LogoutButton from '../../logout';
 import SendEmailButton from '../../sendDataButton';
+import CourseCard from '../../courseCard';
+
 
 function MainPage() {
   const [id, setId] = useState(-1);
   const [course, setCourse] = useState(null);
   const [library, setLibrary] = useState(null);
-  const { isAuthenticated } = useAuth0();
+  const { user, isAuthenticated, isLoading, getAccessTokenSilently } = useAuth0();
   const navigate = useNavigate();
   
   const navigateTo = (path) => {
     navigate(path);
   };
-
   useEffect(() => {
     axios.get(`http://127.0.0.1:8000/api/sessions/?format=json`)
       .then(response => {
@@ -32,6 +33,40 @@ function MainPage() {
         console.error('Error fetching session:', error);
       });
   }, [])
+
+
+  useEffect(() => {
+    const add_user = async () => {
+      if (!isLoading && isAuthenticated && user) {
+        try {
+          // Obtain an access token
+          const token = await getAccessTokenSilently({
+            audience: "https://seshapi.com", // Replace with your API audience
+          });
+
+          // Send the email to the backend
+          const response = await fetch("http://localhost:8000/api/add-user", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`, // Include the access token
+            },
+            body: JSON.stringify({ email: user.email }), // Send email in the body
+          });
+
+          if (response.ok) {
+            console.log("User email sent to the backend");
+          } else {
+            console.error("Error from backend:", await response.json());
+          }
+        } catch (error) {
+          console.error("Error saving user email:", error);
+        }
+      }
+    };
+
+    add_user(); // Trigger the function after login
+  }, [isAuthenticated, user, getAccessTokenSilently]);
 
   return (
   

@@ -144,3 +144,24 @@ def send_email(request):
             logger.error(f"Error processing email: {e}")
             return JsonResponse({"error": str(e)}, status=500)
     return JsonResponse({"error": "Invalid HTTP method"}, status=405)
+
+@csrf_exempt
+@require_auth(None)
+def add_user(request):
+    if request.method == "POST":
+        try:
+            auth_header = request.headers.get("Authorization")
+
+            body = json.loads(request.body)
+            user_email = body.get("email")
+
+            print(user_email)
+
+            if not user_email:
+                return JsonResponse({"error": "Email not provided"}, status=400)
+
+            return JsonResponse({"message": f"Email {user_email} received successfully"})
+        except Exception as e:
+            logger.error(f"Error processing email: {e}")
+            return JsonResponse({"error": str(e)}, status=500)
+    return JsonResponse({"error": "Invalid HTTP method"}, status=405)
