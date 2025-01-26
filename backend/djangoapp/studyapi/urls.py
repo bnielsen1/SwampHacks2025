@@ -11,5 +11,6 @@ urlpatterns = [
     path('public', views.public),
     path('private', views.private),
     path('courses', views.courses),
-    path('courses/<str:search>/', views.search_courses)
+    path('courses/<str:search>/', views.search_courses),
+    path('send-email', views.send_email)
 ]
