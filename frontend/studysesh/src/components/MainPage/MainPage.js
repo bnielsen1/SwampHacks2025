@@ -9,14 +9,16 @@ import LogoutButton from '../../logout';
 
 function MainPage() {
   const [id, setId] = useState(-1);
-  const [building, setBuilding] = useState(null);
+  const [course, setCourse] = useState(null);
+  const [library, setLibrary] = useState(null);
 
   useEffect(() => {
     axios.get(`http://127.0.0.1:8000/api/sessions/?format=json`)
       .then(response => {
         setId(response.data[0].User);
-        setBuilding(response.data[0].Course);
-        console.log('Fetched Session:', response.data[0].User, response.data[0].Course);  
+        setCourse(response.data[0].Course);
+        setLibrary(response.data[0].Library);
+        console.log('Fetched Session:', {id}, {course}, {library});  
       })
       .catch(error => {
         console.error('Error fetching session:', error);
@@ -50,7 +52,8 @@ function MainPage() {
         <div className={styles.rightColumn}>
           Column 3
         <p>{id}</p>
-        <p>{building}</p>
+        <p>{course}</p>
+        <p>{library}</p>
         </div>
       </div>
       
