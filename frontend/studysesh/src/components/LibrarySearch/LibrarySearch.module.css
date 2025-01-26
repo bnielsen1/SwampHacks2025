@@ -1,0 +1,393 @@
+@import url('https://fonts.googleapis.com/css2?family=Irish+Grover&family=Press+Start+2P&display=swap');
+@import url('../../styles/colors.css');
+
+.App {
+  text-align: center;
+  background-color: var(--dark);
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header {
+  padding-left: 7vw;
+  padding-right: 7vw;
+  padding-top: 4vh;
+  padding-bottom: 4vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logoCircle {
+  width: 11vh;
+  height: 11vh;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  background-color: var(--dimGray);
+}
+
+.logo {
+  width: 8vh;
+}
+
+.searchBarContainer {
+  flex: 7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.title {
+  font-family: "Press Start 2P", serif;
+  font-weight: 400;
+  margin-top: -2vh;
+  font-style: normal;
+  font-size: 3vh;
+  color: var(--spotGreen);
+  user-select: none;
+}
+
+.searchBar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+}
+
+.searchInput {
+  font-family: "Press Start 2P", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 2vh;
+  width: 30vw;
+  margin-top: 2vh;
+  padding: 2vh;
+  border-radius: 1vh;
+  color: var(--blackOlive);
+  background-color: var(--light);
+}
+
+.searchButton {
+  background-color: var(--light);
+  border: none;
+  border-radius: 1vh;
+  border-top-left-radius: 0vh;
+  border-bottom-left-radius: 0vh;
+  height: 5.9vh;
+  width: 6vh;
+  padding: 0vh;
+  margin-top: 2vh;
+}
+
+.buttonContainer {
+  flex: 3;
+}
+
+.logoutButton {
+  font-family: "Press Start 2P", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 4vh;
+  width: 100%;
+  padding: 2vh;
+  border-radius: 20vh;
+  color: var(--light);
+  background-color: var(--dimGray);
+  cursor: pointer;
+  box-shadow: 0 2px 2px black;
+}
+
+.logoutButton:hover {
+  background-color: var(--ashGray);
+}
+
+.sessionsContainer {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: top;
+  flex-direction: row;
+  overflow: auto;
+}
+
+.libraryButton {
+  font-family: "Press Start 2P", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 0.6vh; /* Smaller font size */
+  width: 60%; /* Narrower button */
+  padding: 0.5vh; /* Reduced padding */
+  border-radius: 5vh; /* Smaller rounded corners */
+  color: var(--light);
+  background-color: var(--dimGray);
+  cursor: pointer;
+  box-shadow: 0 2px 2px black;
+}
+
+
+
+.sessionsTitle {
+  font-family: "Press Start 2P", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 3vh;
+  color: var(--ashGray);
+  user-select: none;
+}
+
+.sessionsList {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  margin-top: -2vh;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.sessionsList::-webkit-scrollbar {
+  width: 8px; /* Adjust width of the scrollbar */
+}
+
+.sessionsList::-webkit-scrollbar-thumb {
+  background-color: var(--ashGray); /* Thumb color */
+  border-radius: 10px; /* Thumb shape */
+}
+
+.sessionsList::-webkit-scrollbar-track {
+  background: var(--dimGray); /* Track color */
+  border-radius: 10px; /* Track shape */
+}
+
+.sessionItem {
+  font-family: "Press Start 2P", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 2vh;
+  padding: 6vh 12vw;
+  margin: 4vh;
+  background-color: var(--blackOlive);
+  color: var(--light);
+  
+}
+
+.sessionItem:nth-child(odd) {
+  background-color: var(--blackOlive);
+  border-top-left-radius: 2vh;
+  border-top-right-radius: 20vh;
+  border-bottom-left-radius: 20vh;
+  border-bottom-right-radius: 20vh;
+}
+
+.sessionItem:nth-child(even) {
+  background-color: var(--dimGray);
+  border-top-left-radius: 20vh;
+  border-top-right-radius: 2vh;
+  border-bottom-left-radius: 20vh;
+  border-bottom-right-radius: 20vh;
+}
+
+.threecolumns {
+  padding-left: 4.4vw;
+  padding-right: 4.4vw;
+  padding-bottom: 6.25vh;
+  display: flex;
+  justify-content: space-between;
+  height: 74.7vh;
+  user-select: none;
+}
+
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  margin-right: 2.2vw;
+  background-color: var(--blackOlive);
+  box-shadow: 0 2px 2px black;
+  color: white;
+  border-top-left-radius: 2vh;
+  border-top-right-radius: 10vh;
+  border-bottom-left-radius: 20vh;
+  border-bottom-right-radius: 20vh;
+  justify-content: space-between;
+}
+
+.menuImageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  flex: 1;
+}
+
+.menuImage {
+  display: flex;
+  align-items: center;
+  width: 80%;
+  margin-top: 3vh;
+  height: 80%;
+  object-fit: cover;
+  border-radius: 5vh;;
+}
+
+.courseButtonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+.courseButton {
+  font-family: "Press Start 2P", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 4vh;
+  width: 55%;
+  padding: 2vh 0vw;
+  border-radius: 10vh;
+  background-color: var(--dimGray);
+  color: var(--light);
+}
+
+.courseButton:hover {
+  background-color: var(--ashGray);
+}
+
+.middleColumn {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  margin-right: 2.2vw;
+  background-color: var(--dimGray);
+  box-shadow: 0 2px 2px black;
+  color: white;
+  border-top-left-radius: 10vh;
+  border-top-right-radius: 10vh;
+  border-bottom-left-radius: 20vh;
+  border-bottom-right-radius: 20vh;
+  justify-content: space-between;
+}
+
+.sessionButtonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+.sessionButton {
+  font-family: "Press Start 2P", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 4vh;
+  width: 15vh;
+  height: 15vh;
+  padding: 0vh 0vw;
+  border-radius: 10vh;
+  background-color: var(--spotGreen);
+  color: var(--light);
+}
+
+.sessionButton:hover {
+  background-color: var(--lightGreen);
+}
+
+.rightColumn {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  flex: 1;
+  background-color: var(--blackOlive);
+  box-shadow: 0 2px 2px black;
+  color: white;
+  border-top-left-radius: 10vh;
+  border-top-right-radius: 2vh;
+  border-bottom-left-radius: 20vh;
+  border-bottom-right-radius: 20vh;
+  justify-content: space-between;
+}
+
+.libraryButtonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+.libraryButton {
+  font-family: "Press Start 2P", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 4vh;
+  width: 55%;
+  padding: 2vh 0vw;
+  border-radius: 10vh;
+  background-color: var(--dimGray);
+  color: var(--light);
+}
+
+.libraryButton:hover {
+  background-color: var(--ashGray);
+}
+  
+.autocompleteSuggestions {
+  font-family: "Press Start 2P", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 2vh;
+  position: absolute;
+  z-index: 1000;
+  background-color: var(--light);
+  border: 1px solid var(--dimGray);
+  max-height: 60vh;
+  overflow-y: auto;
+  width: 55.4vw;
+  left: 22.3vw;
+  top: 15vh;
+  border-radius: 2vh;
+  box-shadow: 0 2px 2px black;
+}
+
+.autocompleteSuggestions ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.autocompleteSuggestions li {
+  border-radius: 1vh;
+  margin: 1vh;
+  padding: 1vh;
+  cursor: pointer;
+}
+
+.autocompleteSuggestions li:hover {
+  background-color: var(--ashGray);
+}
+
+.noCourse {
+  font-family: "Press Start 2P", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 2vh;
+  position: absolute;
+  z-index: 1000;
+  background-color: var(--light);
+  border: 1px solid var(--dimGray);
+  max-height: 60vh;
+  overflow-y: auto;
+  width: 55.4vw;
+  left: 22.3vw;
+  top: 15vh;
+  border-radius: 2vh;
+  box-shadow: 0 2px 2px black;
+  padding: 1vh;
+}

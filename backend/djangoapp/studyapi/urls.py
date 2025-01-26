@@ -12,6 +12,7 @@ urlpatterns = [
     path('private', views.private),
     path('courses', views.courses),
     path('courses/<str:search>/', views.search_courses),
+    path('libraries', views.search_library),
     path('send-email', views.send_email),
     path('add-user', views.add_user)
 ]

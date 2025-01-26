@@ -110,7 +110,7 @@ function MainPage() {
             <img src="/images/TempImage.jpg" alt="rightImage" className={styles.menuImage}/>
           </div>
           <div className={styles.libraryButtonContainer}>
-            <button className={styles.libraryButton}>Search by Library</button>
+            <button onClick={() => navigateTo('/library-search')} className={styles.libraryButton}>Search by Library</button>
           </div>
         </div>
       </div>
