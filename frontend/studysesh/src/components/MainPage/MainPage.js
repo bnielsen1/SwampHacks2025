@@ -91,7 +91,7 @@ function MainPage() {
       <div className={styles.threecolumns}>
         <div className={styles.leftColumn}>
           <div className={styles.menuImageContainer}>
-            <img src="/images/TempImage.jpg" alt="leftImage" className={styles.menuImage}/>
+            <img src="/images/lecture.jpg" alt="leftImage" className={styles.menuImage}/>
           </div>
           <div className={styles.courseButtonContainer}>
             <button onClick={() => navigateTo('/course-search')} className={styles.courseButton}>Search by Course</button>
@@ -113,7 +113,7 @@ function MainPage() {
         </div>
         <div className={styles.rightColumn}>
           <div className={styles.menuImageContainer}>
-            <img src="/images/TempImage.jpg" alt="rightImage" className={styles.menuImage}/>
+            <img src="/images/Marston_Library.jpg" alt="rightImage" className={styles.menuImage}/>
           </div>
           <div className={styles.libraryButtonContainer}>
             <button onClick={() => navigateTo('/library-search')} className={styles.libraryButton}>Search by Library</button>
