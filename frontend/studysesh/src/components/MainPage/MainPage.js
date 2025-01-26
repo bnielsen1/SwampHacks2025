@@ -7,8 +7,7 @@ import axios from 'axios';
 import LoginButton from "../../login";
 import Profile from '../../profile';
 import LogoutButton from '../../logout';
-import SendEmailButton from '../../sendDataButton';
-import CourseCard from '../../courseCard';
+
 
 
 function MainPage() {
@@ -37,6 +36,7 @@ function MainPage() {
 
   useEffect(() => {
     const add_user = async () => {
+      console.log('called api attempt')
       if (!isLoading && isAuthenticated && user) {
         try {
           // Obtain an access token
@@ -110,7 +110,7 @@ function MainPage() {
             <img src="/images/TempImage.jpg" alt="rightImage" className={styles.menuImage}/>
           </div>
           <div className={styles.libraryButtonContainer}>
-            <button className={styles.libraryButton}>Search by Library</button>
+            <button onClick={() => navigateTo('/library-search')} className={styles.libraryButton}>Search by Library</button>
           </div>
         </div>
       </div>
