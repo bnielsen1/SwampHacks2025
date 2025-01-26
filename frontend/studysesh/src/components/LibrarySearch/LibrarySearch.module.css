@@ -44,7 +44,8 @@
 .title {
   font-family: "Press Start 2P", serif;
   font-weight: 400;
-  margin-top: -2vh;
+  margin-top: 0vh;
+  margin-bottom: 2vh;
   font-style: normal;
   font-size: 3vh;
   color: var(--spotGreen);
@@ -119,17 +120,16 @@
   font-family: "Press Start 2P", serif;
   font-weight: 400;
   font-style: normal;
-  font-size: 0.6vh; /* Smaller font size */
+  font-size: 2vh; /* Smaller font size */
   width: 60%; /* Narrower button */
-  padding: 0.5vh; /* Reduced padding */
+  padding: 2vh; /* Reduced padding */
   border-radius: 5vh; /* Smaller rounded corners */
   color: var(--light);
   background-color: var(--dimGray);
   cursor: pointer;
+  margin-bottom: -2vh;;
   box-shadow: 0 2px 2px black;
 }
-
-
 
 .sessionsTitle {
   font-family: "Press Start 2P", serif;
@@ -150,17 +150,17 @@
 }
 
 .sessionsList::-webkit-scrollbar {
-  width: 8px; /* Adjust width of the scrollbar */
+  width: 1vh; /* Adjust width of the scrollbar */
 }
 
 .sessionsList::-webkit-scrollbar-thumb {
   background-color: var(--ashGray); /* Thumb color */
-  border-radius: 10px; /* Thumb shape */
+  border-radius: 10vh; /* Thumb shape */
 }
 
 .sessionsList::-webkit-scrollbar-track {
   background: var(--dimGray); /* Track color */
-  border-radius: 10px; /* Track shape */
+  border-radius: 10vh; /* Track shape */
 }
 
 .sessionItem {
@@ -168,11 +168,23 @@
   font-weight: 400;
   font-style: normal;
   font-size: 2vh;
-  padding: 6vh 12vw;
+  padding: 4vh 12vw;
   margin: 4vh;
-  background-color: var(--blackOlive);
   color: var(--light);
-  
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+}
+
+.sessionInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 100%;
+  width: 50vw;
 }
 
 .sessionItem:nth-child(odd) {
@@ -183,6 +195,19 @@
   border-bottom-right-radius: 20vh;
 }
 
+.sessionItem:nth-child(odd) .pfp {
+  position: relative;
+  right: -1.5vw;
+  border-radius: 50vh;
+  width: 16vh;
+  height: 16vh;
+}
+
+.sessionItem:nth-child(odd) .sessionInfo {
+  position: relative;
+  left: -5vw;
+}
+
 .sessionItem:nth-child(even) {
   background-color: var(--dimGray);
   border-top-left-radius: 20vh;
@@ -191,151 +216,17 @@
   border-bottom-right-radius: 20vh;
 }
 
-.threecolumns {
-  padding-left: 4.4vw;
-  padding-right: 4.4vw;
-  padding-bottom: 6.25vh;
-  display: flex;
-  justify-content: space-between;
-  height: 74.7vh;
-  user-select: none;
+.sessionItem:nth-child(even) .pfp {
+  position: relative;
+  left: -33.5vw;
+  border-radius: 50vh;
+  width: 16vh;
+  height: 16vh;
 }
 
-.leftColumn {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex: 1;
-  margin-right: 2.2vw;
-  background-color: var(--blackOlive);
-  box-shadow: 0 2px 2px black;
-  color: white;
-  border-top-left-radius: 2vh;
-  border-top-right-radius: 10vh;
-  border-bottom-left-radius: 20vh;
-  border-bottom-right-radius: 20vh;
-  justify-content: space-between;
-}
-
-.menuImageContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  flex: 1;
-}
-
-.menuImage {
-  display: flex;
-  align-items: center;
-  width: 80%;
-  margin-top: 3vh;
-  height: 80%;
-  object-fit: cover;
-  border-radius: 5vh;;
-}
-
-.courseButtonContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
-}
-
-.courseButton {
-  font-family: "Press Start 2P", serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 4vh;
-  width: 55%;
-  padding: 2vh 0vw;
-  border-radius: 10vh;
-  background-color: var(--dimGray);
-  color: var(--light);
-}
-
-.courseButton:hover {
-  background-color: var(--ashGray);
-}
-
-.middleColumn {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  flex: 1;
-  width: 100%;
-  height: 100%;
-  margin-right: 2.2vw;
-  background-color: var(--dimGray);
-  box-shadow: 0 2px 2px black;
-  color: white;
-  border-top-left-radius: 10vh;
-  border-top-right-radius: 10vh;
-  border-bottom-left-radius: 20vh;
-  border-bottom-right-radius: 20vh;
-  justify-content: space-between;
-}
-
-.sessionButtonContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
-}
-
-.sessionButton {
-  font-family: "Press Start 2P", serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 4vh;
-  width: 15vh;
-  height: 15vh;
-  padding: 0vh 0vw;
-  border-radius: 10vh;
-  background-color: var(--spotGreen);
-  color: var(--light);
-}
-
-.sessionButton:hover {
-  background-color: var(--lightGreen);
-}
-
-.rightColumn {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  flex: 1;
-  background-color: var(--blackOlive);
-  box-shadow: 0 2px 2px black;
-  color: white;
-  border-top-left-radius: 10vh;
-  border-top-right-radius: 2vh;
-  border-bottom-left-radius: 20vh;
-  border-bottom-right-radius: 20vh;
-  justify-content: space-between;
-}
-
-.libraryButtonContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
-}
-
-.libraryButton {
-  font-family: "Press Start 2P", serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 4vh;
-  width: 55%;
-  padding: 2vh 0vw;
-  border-radius: 10vh;
-  background-color: var(--dimGray);
-  color: var(--light);
-}
-
-.libraryButton:hover {
-  background-color: var(--ashGray);
+.sessionItem:nth-child(even) .sessionInfo {
+  position: relative;
+  left: 5vw;
 }
   
 .autocompleteSuggestions {
@@ -373,7 +264,7 @@
   background-color: var(--ashGray);
 }
 
-.noCourse {
+.notFound {
   font-family: "Press Start 2P", serif;
   font-weight: 400;
   font-style: normal;
@@ -386,8 +277,202 @@
   overflow-y: auto;
   width: 55.4vw;
   left: 22.3vw;
-  top: 15vh;
+  top: 20vh;
   border-radius: 2vh;
   box-shadow: 0 2px 2px black;
   padding: 1vh;
+}
+
+.sessionItem:hover {
+  background-color: var(--ashGray);
+}
+
+
+.popupOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(39, 39, 39, .6);
+  z-index: 1000;
+}
+
+.popupContent {
+  position: absolute;
+  top: 24vh;
+  background-color: var(--blackOlive);
+  border-radius: 20vh;
+  padding: 2vh;
+  width: 90vw;
+  height: 64vh;
+  box-shadow: 0 2px 2px black;
+}
+
+.popupTitle {
+  font-family: "Press Start 2P", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 3vh;
+  color: var(--light);
+  user-select: none;
+}
+
+.popupContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  height: 100%;
+}
+
+.popupUserTag {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  font-family: "Press Start 2P", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 3vh;
+  color: var(--ashGray);
+  user-select: none;
+  left: 2vw;
+  top: 20vh;
+  width: 24vw;
+}
+
+.popupUser {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  font-family: "Press Start 2P", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 3vh;
+  color: var(--light);
+  user-select: none;
+  left: 2vw;
+  top: 25vh;
+  width: 24vw;
+  
+}
+
+.popupLibraryTag {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  font-family: "Press Start 2P", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 3vh;
+  color: var(--ashGray);
+  user-select: none;
+  left: 24vw;
+  top: 20vh;
+  width: 24vw;
+}
+
+.popupLibrary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  font-family: "Press Start 2P", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 3vh;
+  color: var(--light);
+  user-select: none;
+  left: 24vw;
+  top: 25vh;
+  width: 24vw;
+}
+
+.popupTimeTag {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  font-family: "Press Start 2P", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 3vh;
+  color: var(--ashGray);
+  user-select: none;
+  left: 45vw;
+  top: 20vh;
+  width: 24vw;
+}
+
+.popupTime {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  font-family: "Press Start 2P", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 3vh;
+  color: var(--light);
+  user-select: none;
+  left: 45vw;
+  top: 25vh;
+  width: 24vw;
+}
+
+.popupDescription {
+  display: flex;
+  justify-content: center;
+  align-items: top;
+  position: absolute;
+  font-family: "Press Start 2P", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 3vh;
+  color: var(--light);
+  user-select: none;
+  left: 8vw;
+  top: 34vh;
+  width: 58vw;
+  height: 28vh;
+  max-height: 28vh;
+  border-radius: 5vh;;
+  background-color: var(--dimGray);
+  overflow-y: auto;
+}
+
+.popupDescription::-webkit-scrollbar {
+  width: 1vh; /* Adjust width of the scrollbar */
+}
+
+.popupDescription::-webkit-scrollbar-thumb {
+  background-color: var(--light); /* Thumb color */
+  border-radius: 10vh; /* Thumb shape */
+}
+
+.popupDescription::-webkit-scrollbar-track {
+  background: var(--ashGray); /* Track color */
+  border-radius: 10vh; /* Track shape */
+}
+
+.popupPicture {
+  position: absolute;
+  top: 15vh;
+  right: 5vw;
+  height: 40vh;
+  width: 40vh;
+  background-color: var(--dimGray);
+  border-radius: 20vh;
+}
+
+.popupPfp {
+  border-radius: 20vh;
+  height: 40vh;
+  width: 40vh;
 }
