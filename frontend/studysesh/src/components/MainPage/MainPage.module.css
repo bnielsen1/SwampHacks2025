@@ -120,6 +120,7 @@
   width: 80%;
   margin-top: 3vh;
   height: 80%;
+  max-height: 30vh;
   object-fit: cover;
   border-radius: 5vh;;
 }
@@ -183,6 +184,11 @@
   border-radius: 10vh;
   background-color: var(--spotGreen);
   color: var(--light);
+}
+
+.plusSymbol {
+  max-height:13vh;
+  
 }
 
 .sessionButton:hover {
