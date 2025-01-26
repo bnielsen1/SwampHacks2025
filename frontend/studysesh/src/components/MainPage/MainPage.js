@@ -8,7 +8,7 @@ import LoginButton from "../../login";
 import Profile from '../../profile';
 import LogoutButton from '../../logout';
 import SendEmailButton from '../../sendDataButton';
-import CourseCard from '../../courseCard';
+// import CourseCard from '../../courseCard';
 
 
 function MainPage() {
