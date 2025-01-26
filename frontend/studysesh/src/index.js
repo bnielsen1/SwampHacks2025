@@ -12,7 +12,8 @@ root.render(
       domain='dev-b7m4os20con4lq0x.us.auth0.com'
       clientId="3J0h4HlvFgNvZx5txhrQzQA0PNLnmvle"
       authorizationParams={{
-      redirect_uri: window.location.origin
+        redirect_uri: window.location.origin,
+        audience: "https://seshapi.com",
       }}
     >
       <App />
