@@ -1,0 +1,25 @@
+.App {
+  text-align: center;
+}
+
+.threecolumns {
+  display:flex;
+  justify-content: space-between;
+  height: 98vh;
+}
+
+.column {
+  flex: 1;
+  margin: 4vh 10px;
+  margin-bottom: 10vh;
+  padding: 2vh;
+  background-color: #484848;
+  border: 1px solid black;
+  color: white;
+}
+
+.title {
+  font-size: 2em;
+  padding-top: 4vh;
+  color: blue;
+}
