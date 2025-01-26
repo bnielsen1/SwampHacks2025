@@ -7,4 +7,6 @@ urlpatterns = [
     path('sessions/course/<str:coursecode>/', views.session_course),
     path('sessions/library/<str:library>/', views.session_library),
     path('users', views.users),
+    path('courses', views.courses),
+    path('courses/<str:search>/', views.search_courses)
 ]
