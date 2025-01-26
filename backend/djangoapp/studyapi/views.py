@@ -1,4 +1,5 @@
 from django.shortcuts import render
+import json
 
 # Create your views here.
 
@@ -8,6 +9,10 @@ from utils import get_db_handle
 from bson import json_util
 from . import validator
 from authlib.integrations.django_oauth2 import ResourceProtector
+import logging
+from django.views.decorators.csrf import csrf_exempt
+
+logger = logging.getLogger(__name__)
 
 from .config import db, host, username, password
 
@@ -119,4 +124,59 @@ def search_courses(request, search):
         # Return the data in the response
         return JsonResponse(data_list, safe=False, json_dumps_params={'default': json_util.default})
 
+    return JsonResponse({"error": "Invalid HTTP method"}, status=405)
+
+@csrf_exempt
+@require_auth(None)
+def send_email(request):
+    if request.method == "POST":
+        try:
+            auth_header = request.headers.get("Authorization")
+
+            body = json.loads(request.body)
+            user_email = body.get("email")
+
+            if not user_email:
+                return JsonResponse({"error": "Email not provided"}, status=400)
+
+            return JsonResponse({"message": f"Email {user_email} received successfully"})
+        except Exception as e:
+            logger.error(f"Error processing email: {e}")
+            return JsonResponse({"error": str(e)}, status=500)
+    return JsonResponse({"error": "Invalid HTTP method"}, status=405)
+
+@csrf_exempt
+@require_auth(None)
+def add_user(request):
+    if request.method == "POST":
+        try:
+            auth_header = request.headers.get("Authorization")
+
+            body = json.loads(request.body)
+            user_email = body.get("email")
+
+            print(user_email)
+
+            if not user_email:
+                return JsonResponse({"error": "Email not provided"}, status=400)
+            
+            db_handle, client = get_db_handle(db, host, username, password)
+            collection = db_handle["Users"]
+
+            print(collection.find_one({'Email': user_email}))
+
+            if (collection.find_one({'Email': user_email})):
+                print('account already found under above email. normal login')
+                return JsonResponse({"message": f"Email {user_email} already has account"})
+            else:
+                # make account
+                new_user = {
+                    'Email': user_email
+                }
+                collection.insert_one(new_user)
+                return JsonResponse({"message": f"Email {user_email} new account created successfully"})
+            
+        except Exception as e:
+            logger.error(f"Error processing email: {e}")
+            return JsonResponse({"error": str(e)}, status=500)
     return JsonResponse({"error": "Invalid HTTP method"}, status=405)
