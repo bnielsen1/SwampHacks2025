@@ -136,7 +136,16 @@ function CourseSearch() {
             <h3 className={styles.sessionsTitle}>Sessions for {selectedCourseCode}</h3>
             <ul className={styles.sessionsList}>
               {sessions.map((session) => (
-                <li className={styles.sessionItem} key={session._id.$oid}>User: {session.User} - Library: {session.Library} - Course {session.Course}</li>
+                <li className={styles.sessionItem} key={session._id.$oid}>
+                  <div className={styles.sessionInfo}>
+                    <div>User: {session.User}</div>
+                    <div>Library: {session.Library}</div>  
+                    <div>Course {session.Course}</div>
+                  </div>
+                  <div className={styles.pfp}>
+                    <img src="/images/TempImage.jpg" alt="pfp" className={styles.pfp}/>
+                  </div>
+                </li>
               ))}
             </ul>
           </div>
