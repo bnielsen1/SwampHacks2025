@@ -6,6 +6,7 @@ import axios from 'axios';
 import LoginButton from "../../login";
 import Profile from '../../profile';
 import LogoutButton from '../../logout';
+import SendEmailButton from '../../sendDataButton';
 
 function MainPage() {
   const [id, setId] = useState(-1);
@@ -54,6 +55,7 @@ function MainPage() {
         <p>{id}</p>
         <p>{course}</p>
         <p>{library}</p>
+        <SendEmailButton />
         </div>
       </div>
       
