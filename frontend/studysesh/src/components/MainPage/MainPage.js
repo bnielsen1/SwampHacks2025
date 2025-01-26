@@ -12,11 +12,11 @@ function MainPage() {
   const [building, setBuilding] = useState(null);
 
   useEffect(() => {
-    axios.get(`http://127.0.0.1:8000/api/sessions`)
+    axios.get(`http://127.0.0.1:8000/api/sessions/?format=json`)
       .then(response => {
-        setId(response.data[0].id);
-        setBuilding(response.data[0].building);
-        console.log('Fetched Session:', response.data[0].id, response.data[0].building);  
+        setId(response.data[0].User);
+        setBuilding(response.data[0].Course);
+        console.log('Fetched Session:', response.data[0].User, response.data[0].Course);  
       })
       .catch(error => {
         console.error('Error fetching session:', error);
@@ -34,9 +34,7 @@ function MainPage() {
         StudySesh
         </div>
         <div className={styles.buttonContainer}>
-          <button className={styles.loginButton}>
-            Log In
-          </button>
+          <LoginButton className={styles.loginButton}/>
         </div>
       </div>
       <div className={styles.threecolumns}>
@@ -55,14 +53,8 @@ function MainPage() {
         <p>{building}</p>
         </div>
       </div>
-
-      <LoginButton />
+      
       <LogoutButton />
-      <div className="three-columns">
-        <div className="column">Column 1</div>
-        <div className="column">Column 2</div>
-        <div className="column">Column 3</div>
-      </div>
       <Profile />
     </div>
   )
