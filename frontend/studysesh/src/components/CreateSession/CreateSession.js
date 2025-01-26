@@ -7,9 +7,11 @@ const CreateSession = () => {
   //const [user, setUser] = useState('');
   const [course, setCourse] = useState('');
   const [library, setLibrary] = useState('');
-  //const [hours, setHours] = useState('');
+  const [date, setDate] = useState('');
   const [responseMessage, setResponseMessage] = useState('');
-
+  const [description, setDescription] = useState('');
+  
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     //console.log('Submitted hours:', hours); // Log the hours on submission
@@ -17,7 +19,9 @@ const CreateSession = () => {
       user: user.name,
       course: course,
       library: library,
-      //hours: hours
+      date: date,
+      pfp: user.picture,
+      description: description
     };
 
     try {
@@ -69,16 +73,33 @@ const CreateSession = () => {
             required
           />
         </div>
-        {/* { <div>
-          <label htmlFor="hours">End Time:</label>
+          <div>
+          <label htmlFor="date">End Time:</label>
           <input
-            type="time"
-            id="hours"
-            value={hours}
-            onChange={(e) => setHours(e.target.value)}
+            type="datetime-local"
+            id="date"
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
             required
           />
-        </div> } */}
+        </div> 
+        <div>
+          <input
+            type="hidden"
+            id="pfp"
+            value={user.picture} // You can set this dynamically if needed
+          />
+        </div>
+        <div>
+          <label htmlFor="description">Description:</label>
+          <input
+            type="text"
+            id="description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            required
+          />
+        </div>
         <button type="submit">Create Session</button>
       </form>
       {responseMessage && <p>{responseMessage}</p>}
