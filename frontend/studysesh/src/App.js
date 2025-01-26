@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import MainPage from './components/MainPage/MainPage';
+import SearchCoursePage from './components/SearchCoursePage/SearchCoursePage'
 import './App.css';
 
 function App() {
