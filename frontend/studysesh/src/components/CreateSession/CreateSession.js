@@ -155,7 +155,7 @@ const CreateSession = () => {
             required
           />
         </div>
-        <button type="submit">Create Session Andrew</button>
+        <button type="submit">Create Session</button>
       </form>
       {responseMessage && <p>{responseMessage}</p>}
     </div>
