@@ -57,7 +57,7 @@ def session_library(request, library):
     db_handle, client = get_db_handle(db, host, username, password)
 
     collection = db_handle['Sessions']
-    data = collection.find({'Course': library})
+    data = collection.find({'Library': library})
 
     data_list = list(data)
 
@@ -119,6 +119,24 @@ def search_courses(request, search):
         # data = collection.find(query).limit(10)  # Limit to the first 10 results
         data = collection.find(query).limit(10)
         
+        # Convert the result to a list and return as JSON
+        data_list = list(data)
+        
+        # Return the data in the response
+        return JsonResponse(data_list, safe=False, json_dumps_params={'default': json_util.default})
+
+    return JsonResponse({"error": "Invalid HTTP method"}, status=405)
+
+def search_library(request):
+    if request.method == "GET":
+
+        # Connect to the database
+        db_handle, client = get_db_handle(db, host, username, password)
+        collection = db_handle['UFlibraries']
+        
+        # Search for libraries with matching search
+
+        data = collection.find()
         # Convert the result to a list and return as JSON
         data_list = list(data)
         

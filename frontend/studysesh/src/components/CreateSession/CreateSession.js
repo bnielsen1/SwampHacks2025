@@ -1,22 +1,68 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useAuth0 } from "@auth0/auth0-react";
 
 const CreateSession = () => {
-  const { user } = useAuth0();
-  //const [user, setUser] = useState('');
+  const { user, isAuthenticated } = useAuth0();
   const [course, setCourse] = useState('');
   const [library, setLibrary] = useState('');
+  const [libraries, setLibraries] = useState([]);
   const [date, setDate] = useState('');
   const [responseMessage, setResponseMessage] = useState('');
+  const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
+
+  // Fetch libraries from backend
+  useEffect(() => {
+    const fetchLibraries = async () => {
+      try {
+        const response = await axios.get('http://localhost:8000/api/libraries'); // Replace with your backend API URL
+        setLibraries(response.data);
+      } catch (error) {
+        console.error('Error fetching libraries:', error);
+      }
+    };
+
+    fetchLibraries();
+  }, []);
+
+  // Course validation
+  const validateCourse = async (Course) => {
+    try {
+      const response = await axios.get(`http://localhost:8000/api/courses/${Course}`);
+      return (Course === response.data[0].code);
+    } catch (error) {
+      console.error("Error validating course:", error);
+      return false;
+    }
+  };
+
   const [description, setDescription] = useState('');
   
   
   const handleSubmit = async (e) => {
     e.preventDefault();
-    //console.log('Submitted hours:', hours); // Log the hours on submission
+    setErrors({});
+    setLoading(true);
+
+    // Validate course
+    const isValidCourse = await validateCourse(course);
+    if (!isValidCourse) {
+      setErrors((prev) => ({ ...prev, course: "Invalid course name." }));
+      setLoading(false);
+      return;
+    }
+
+    // Validate library
+    if (!library) {
+      setErrors((prev) => ({ ...prev, library: "Library is required." }));
+      setLoading(false);
+      return;
+    }
+
+    // Prepare data for submission
     const data = {
-      user: user.name,
+      user: isAuthenticated ? user.name : 'Unknown User',  // Handle undefined user
       course: course,
       library: library,
       date: date,
@@ -35,6 +81,8 @@ const CreateSession = () => {
     } catch (error) {
       console.error('Error:', error);
       setResponseMessage('An error occurred while creating the session.');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -44,14 +92,8 @@ const CreateSession = () => {
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="user">User:</label>
-          <p>{user.name}</p>
-          {/* <input
-            type="text"
-            id="user"
-            value={user}
-            onChange={(e) => setUser(e.target.value)}
-            required
-          /> */}
+          {/* Only show the user's name if authenticated */}
+          <p>{isAuthenticated ? user.name : 'Guest'}</p>
         </div>
         <div>
           <label htmlFor="course">Course:</label>
@@ -62,17 +104,32 @@ const CreateSession = () => {
             onChange={(e) => setCourse(e.target.value)}
             required
           />
+          {errors.course && (
+            <p className="text-red-600 text-sm mt-1">{errors.course}</p>
+          )}
         </div>
         <div>
           <label htmlFor="library">Library:</label>
-          <input
-            type="text"
+          <select
             id="library"
             value={library}
             onChange={(e) => setLibrary(e.target.value)}
             required
-          />
+          >
+            <option value="">Select a Library</option>
+            {libraries.map((lib) => (
+              <option key={lib.Library} value={lib.Library}>
+                {lib.Library}
+              </option>
+            ))}
+          </select>
+          {errors.library && (
+            <p className="text-red-600 text-sm mt-1">{errors.library}</p>
+          )}
         </div>
+        <button type="submit" disabled={loading}>
+          {loading ? "Submitting..." : "Create Session"}
+        </button>
           <div>
           <label htmlFor="date">End Time:</label>
           <input

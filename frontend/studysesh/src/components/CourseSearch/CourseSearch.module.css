@@ -134,17 +134,17 @@
 }
 
 .sessionsList::-webkit-scrollbar {
-  width: 8px; /* Adjust width of the scrollbar */
+  width: 1vh; /* Adjust width of the scrollbar */
 }
 
 .sessionsList::-webkit-scrollbar-thumb {
   background-color: var(--ashGray); /* Thumb color */
-  border-radius: 10px; /* Thumb shape */
+  border-radius: 10vh; /* Thumb shape */
 }
 
 .sessionsList::-webkit-scrollbar-track {
   background: var(--dimGray); /* Track color */
-  border-radius: 10px; /* Track shape */
+  border-radius: 10vh; /* Track shape */
 }
 
 .sessionItem {
@@ -152,11 +152,23 @@
   font-weight: 400;
   font-style: normal;
   font-size: 2vh;
-  padding: 6vh 12vw;
+  padding: 4vh 12vw;
   margin: 4vh;
   background-color: var(--blackOlive);
   color: var(--light);
-  
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+}
+
+.sessionInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 100%;
 }
 
 .sessionItem:nth-child(odd) {
@@ -167,6 +179,19 @@
   border-bottom-right-radius: 20vh;
 }
 
+.sessionItem:nth-child(odd) .pfp {
+  position: relative;
+  right: -1.5vw;
+  border-radius: 50vh;
+  width: 16vh;
+  height: 16vh;
+}
+
+.sessionItem:nth-child(odd) .sessionInfo {
+  position: relative;
+  left: -5vw;
+}
+
 .sessionItem:nth-child(even) {
   background-color: var(--dimGray);
   border-top-left-radius: 20vh;
@@ -175,48 +200,17 @@
   border-bottom-right-radius: 20vh;
 }
 
-.threecolumns {
-  padding-left: 4.4vw;
-  padding-right: 4.4vw;
-  padding-bottom: 6.25vh;
-  display: flex;
-  justify-content: space-between;
-  height: 74.7vh;
-  user-select: none;
+.sessionItem:nth-child(even) .pfp {
+  position: relative;
+  left: -33.5vw;
+  border-radius: 50vh;
+  width: 16vh;
+  height: 16vh;
 }
 
-.leftColumn {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex: 1;
-  margin-right: 2.2vw;
-  background-color: var(--blackOlive);
-  box-shadow: 0 2px 2px black;
-  color: white;
-  border-top-left-radius: 2vh;
-  border-top-right-radius: 10vh;
-  border-bottom-left-radius: 20vh;
-  border-bottom-right-radius: 20vh;
-  justify-content: space-between;
-}
-
-.menuImageContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  flex: 1;
-}
-
-.menuImage {
-  display: flex;
-  align-items: center;
-  width: 80%;
-  margin-top: 3vh;
-  height: 80%;
-  object-fit: cover;
-  border-radius: 5vh;;
+.sessionItem:nth-child(even) .sessionInfo {
+  position: relative;
+  left: 5vw;
 }
 
 .courseButtonContainer {
@@ -239,86 +233,6 @@
 }
 
 .courseButton:hover {
-  background-color: var(--ashGray);
-}
-
-.middleColumn {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  flex: 1;
-  width: 100%;
-  height: 100%;
-  margin-right: 2.2vw;
-  background-color: var(--dimGray);
-  box-shadow: 0 2px 2px black;
-  color: white;
-  border-top-left-radius: 10vh;
-  border-top-right-radius: 10vh;
-  border-bottom-left-radius: 20vh;
-  border-bottom-right-radius: 20vh;
-  justify-content: space-between;
-}
-
-.sessionButtonContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
-}
-
-.sessionButton {
-  font-family: "Press Start 2P", serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 4vh;
-  width: 15vh;
-  height: 15vh;
-  padding: 0vh 0vw;
-  border-radius: 10vh;
-  background-color: var(--spotGreen);
-  color: var(--light);
-}
-
-.sessionButton:hover {
-  background-color: var(--lightGreen);
-}
-
-.rightColumn {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  flex: 1;
-  background-color: var(--blackOlive);
-  box-shadow: 0 2px 2px black;
-  color: white;
-  border-top-left-radius: 10vh;
-  border-top-right-radius: 2vh;
-  border-bottom-left-radius: 20vh;
-  border-bottom-right-radius: 20vh;
-  justify-content: space-between;
-}
-
-.libraryButtonContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
-}
-
-.libraryButton {
-  font-family: "Press Start 2P", serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 4vh;
-  width: 55%;
-  padding: 2vh 0vw;
-  border-radius: 10vh;
-  background-color: var(--dimGray);
-  color: var(--light);
-}
-
-.libraryButton:hover {
   background-color: var(--ashGray);
 }
   
